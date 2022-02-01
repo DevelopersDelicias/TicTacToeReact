@@ -22,8 +22,8 @@ body {
   padding: 10px;
   margin: 10px;
   border-radius: 10px;
-  background-color: #6ab7be;
-  color: #fff;
+  background-color: #78bec5;
+  color: #78bec5;
   font-size: 80px;
   line-height: 100px;
   text-align: center;
@@ -33,18 +33,26 @@ body {
   position: relative;
 }
 
+.empty:before {
+  background-color: #78bec5 !important;
+  color: #78bec5;
+}
+
 .empty:hover {
   background-color: #3d4250 !important;
+  color: rgba(215, 217, 221, 0.571) !important;
 }
 
 .player-1 {
   background-color: #dc685a;
   cursor: not-allowed;
+  color: #fff;
 }
 
 .player-2 {
   background-color: #ecaf4f;
   cursor: not-allowed;
+  color: #fff;
 }
 
 .btn {

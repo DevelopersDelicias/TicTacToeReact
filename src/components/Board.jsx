@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import Square from "./Square";
 
-const Board = ({ board: squares, onPlay }) => {
+const Board = ({ board: squares, onPlay, nextPlayer }) => {
   return (
     <div className="board">
       {squares.map((square, index) => (
@@ -11,6 +11,7 @@ const Board = ({ board: squares, onPlay }) => {
           number={index + 1}
           key={index + 1}
           onPlay={onPlay}
+          nextPlayer={nextPlayer}
         />
       ))}
     </div>
@@ -20,6 +21,7 @@ const Board = ({ board: squares, onPlay }) => {
 Board.propTypes = {
   board: PropTypes.array.isRequired,
   onPlay: PropTypes.func.isRequired,
+  nextPlayer: PropTypes.object.isRequired,
 };
 
 export default Board;

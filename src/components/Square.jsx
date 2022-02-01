@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 
-const Square = ({ square: player, number, onPlay }) => {
+const Square = ({ square: player, number, onPlay, nextPlayer }) => {
   const style = {
     backgroundColor: player?.bgColor ?? "#78bec5",
   };
@@ -21,7 +21,7 @@ const Square = ({ square: player, number, onPlay }) => {
         onPlay(number);
       }}
     >
-      {mark}
+      {!mark ? nextPlayer.mark : mark}
     </div>
   );
 };
@@ -30,6 +30,7 @@ Square.propTypes = {
   square: PropTypes.object,
   number: PropTypes.number.isRequired,
   onPlay: PropTypes.func.isRequired,
+  nextPlayer: PropTypes.object.isRequired,
 };
 
 export default Square;
