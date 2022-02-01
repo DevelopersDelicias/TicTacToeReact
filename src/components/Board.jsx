@@ -5,7 +5,6 @@ import Square from "./Square";
 const Board = ({ board: squares, onPlay, nextPlayer }) => {
   return (
     <div className="board">
-      {console.log("next player",nextPlayer)}
       {squares.map((square, index) => (
         <Square
           square={square}
