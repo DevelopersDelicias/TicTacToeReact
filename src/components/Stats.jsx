@@ -7,7 +7,9 @@ const Stats = ({ nextPlayer, winner, marksInBoard }) => {
       <div>
         <label>Next Player: </label>
         <span>
-          Player {nextPlayer.id} ({nextPlayer.mark})
+          {nextPlayer
+            ? `Player ${nextPlayer.id} (${nextPlayer.mark})`
+            : "Nobody"}
         </span>
       </div>
       <div>
@@ -16,14 +18,16 @@ const Stats = ({ nextPlayer, winner, marksInBoard }) => {
       </div>
       <div>
         <label>Winner: </label>
-        <span>{winner?.mark ?? "Nobody"}</span>
+        <span>
+          {winner ? `Player ${winner.id} (${winner.mark})` : "Nobody"}
+        </span>
       </div>
     </div>
   );
 };
 
 Stats.propTypes = {
-  nextPlayer: PropTypes.object.isRequired,
+  nextPlayer: PropTypes.object,
   winner: PropTypes.object,
   marksInBoard: PropTypes.number.isRequired,
 };

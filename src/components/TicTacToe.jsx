@@ -40,6 +40,7 @@ const TicTacToe = (props) => {
 
       if (theWinner) {
         setWinner(theWinner);
+        setNextPlayer(NO_PLAYER);
       }
     }
   }, [board]);
@@ -70,7 +71,11 @@ const TicTacToe = (props) => {
         winner={winner}
         marksInBoard={marksInBoard}
       />
-      <Board board={board} onPlay={handleSelectPlayer} nextPlayer={nextPlayer} />
+      <Board
+        board={board}
+        onPlay={handleSelectPlayer}
+        nextPlayer={nextPlayer}
+      />
       <ToolBar onReset={handleOnReset} />
     </div>
   );

@@ -19,7 +19,7 @@ const Square = ({ square: player, number, onPlay, nextPlayer }) => {
         onPlay(number);
       }}
     >
-      <span>{player?.mark ?? nextPlayer.mark}</span>
+      <span>{player?.mark ?? nextPlayer?.mark}</span>
     </div>
   );
 };
@@ -28,7 +28,7 @@ Square.propTypes = {
   square: PropTypes.object,
   number: PropTypes.number.isRequired,
   onPlay: PropTypes.func.isRequired,
-  nextPlayer: PropTypes.object.isRequired,
+  nextPlayer: PropTypes.object,
 };
 
 export default Square;

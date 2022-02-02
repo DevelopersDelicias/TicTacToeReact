@@ -21,7 +21,7 @@ const Board = ({ board: squares, onPlay, nextPlayer }) => {
 Board.propTypes = {
   board: PropTypes.array.isRequired,
   onPlay: PropTypes.func.isRequired,
-  nextPlayer: PropTypes.object.isRequired,
+  nextPlayer: PropTypes.object,
 };
 
 export default Board;
