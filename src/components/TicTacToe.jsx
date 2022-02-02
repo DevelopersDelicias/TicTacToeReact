@@ -25,7 +25,9 @@ const NO_PLAYER = null;
 const PLAYER_1 = { id: 1, mark: "X", bgColor: "#dc685a" };
 const PLAYER_2 = { id: 2, mark: "O", bgColor: "#ecaf4f" };
 
-const DEFAULT_BOARD = new Array(9).fill(NO_PLAYER);
+const NUMBER_OF_POSITIONS = 9;
+const MINIMUM_PLACED_MARKS_TO_WIN = 5;
+const DEFAULT_BOARD = new Array(NUMBER_OF_POSITIONS).fill(NO_PLAYER);
 const DEFAULT_PLAYER = PLAYER_1;
 
 const TicTacToe = (props) => {
@@ -35,13 +37,21 @@ const TicTacToe = (props) => {
   const marksInBoard = board.filter((s) => s != NO_PLAYER).length;
 
   useEffect(() => {
-    if (marksInBoard >= 5) {
+    if (
+      marksInBoard >= MINIMUM_PLACED_MARKS_TO_WIN &&
+      marksInBoard < NUMBER_OF_POSITIONS
+    ) {
       const theWinner = getWinner(board);
 
       if (theWinner) {
         setWinner(theWinner);
         setNextPlayer(NO_PLAYER);
       }
+    }
+
+    if (marksInBoard === NUMBER_OF_POSITIONS) {
+      alert("DRAW GAME!");
+      handleOnReset();
     }
   }, [board]);
 
