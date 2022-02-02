@@ -6,7 +6,6 @@ const Square = ({ square: player, number, onPlay, nextPlayer }) => {
   const style = {
     backgroundColor: player?.bgColor ?? "#78bec5",
   };
-  const mark = player?.mark;
 
   return (
     <div
@@ -14,14 +13,13 @@ const Square = ({ square: player, number, onPlay, nextPlayer }) => {
         square: true,
         empty: !player,
         [`player-${player?.id ?? "empty"}`]: true,
-        "next-player-1": true,
       })}
       style={style}
       onClick={() => {
         onPlay(number);
       }}
     >
-      {!mark ? nextPlayer.mark : mark}
+      <span>{player?.mark ?? nextPlayer.mark}</span>
     </div>
   );
 };
