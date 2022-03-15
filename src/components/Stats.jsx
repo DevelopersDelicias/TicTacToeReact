@@ -1,22 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-
-const Section = ({ label, message }) => {
-  return (
-    <div>
-      <label>{label}</label>
-      <span>{message}</span>
-    </div>
-  );
-};
-
-Section.propTypes = {
-  label: PropTypes.string.isRequired,
-  message: PropTypes.any.isRequired,
-};
-
-const getPlayerMessage = (player) =>
-  player ? `Player ${player.id} (${player.mark})` : "Nobody";
+import Section from "./Section";
+import { getPlayerMessage } from "../helpers/game.helpers";
 
 const Stats = ({ nextPlayer, winner, marksInBoard }) => {
   return (
