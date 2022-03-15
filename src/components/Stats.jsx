@@ -6,9 +6,17 @@ import { getPlayerMessage } from "../helpers/game.helpers";
 const Stats = ({ nextPlayer, winner, marksInBoard }) => {
   return (
     <div className="stats">
-      <Section label="Next Player:" message={getPlayerMessage(nextPlayer)} />
-      <Section label="Number of marks:" message={marksInBoard} />
-      <Section label="Winner:" message={getPlayerMessage(winner)} />
+      <Section
+        id="nextPlayer"
+        label="Next Player:"
+        message={getPlayerMessage(nextPlayer)}
+      />
+      <Section
+        id="numberOfMarks"
+        label="Number of marks:"
+        message={marksInBoard}
+      />
+      <Section id="winner" label="Winner:" message={getPlayerMessage(winner)} />
     </div>
   );
 };

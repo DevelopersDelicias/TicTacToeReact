@@ -1,9 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Section = ({ label, message }) => {
+const Section = ({ id, label, message }) => {
   return (
-    <div>
+    <div className="section" id={id}>
       <label>{label}</label>
       <span>{message}</span>
     </div>
@@ -11,6 +11,7 @@ const Section = ({ label, message }) => {
 };
 
 Section.propTypes = {
+  id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   message: PropTypes.any.isRequired,
 };
