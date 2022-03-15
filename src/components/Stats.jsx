@@ -1,27 +1,34 @@
 import React from "react";
 import PropTypes from "prop-types";
 
+const Section = ({ label, message }) => {
+  return (
+    <div>
+      <label>{label}</label>
+      <span>{message}</span>
+    </div>
+  );
+};
+
+Section.propTypes = {
+  label: PropTypes.string.isRequired,
+  message: PropTypes.string.isRequired,
+};
+
 const Stats = ({ nextPlayer, winner, marksInBoard }) => {
   return (
     <div className="stats">
-      <div>
-        <label>Next Player: </label>
-        <span>
-          {nextPlayer
-            ? `Player ${nextPlayer.id} (${nextPlayer.mark})`
-            : "Nobody"}
-        </span>
-      </div>
-      <div>
-        <label>Number of marks: </label>
-        <span>{marksInBoard}</span>
-      </div>
-      <div>
-        <label>Winner: </label>
-        <span>
-          {winner ? `Player ${winner.id} (${winner.mark})` : "Nobody"}
-        </span>
-      </div>
+      <Section
+        label="Next Player: "
+        message={
+          nextPlayer ? `Player ${nextPlayer.id} (${nextPlayer.mark})` : "Nobody"
+        }
+      />
+      <Section label="Number of marks: " message={marksInBoard} />
+      <Section
+        label="Winner: "
+        message={winner ? `Player ${winner.id} (${winner.mark})` : "Nobody"}
+      />
     </div>
   );
 };
