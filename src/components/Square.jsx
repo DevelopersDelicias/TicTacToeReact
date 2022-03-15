@@ -2,24 +2,26 @@ import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 
-const Square = ({ square: player, number, onPlay, nextPlayer }) => {
+const DEFAULT_BACKGROUND_COLOR = "#78bec5";
+
+const Square = ({ square: player, number, onPlay, mark }) => {
   const style = {
-    backgroundColor: player?.bgColor ?? "#78bec5",
+    backgroundColor: player?.bgColor ?? DEFAULT_BACKGROUND_COLOR,
   };
+
+  const playerClassName = `player-${player?.id ?? "empty"}`;
 
   return (
     <div
-      className={classNames({
-        square: true,
+      className={classNames("square", playerClassName, {
         empty: !player,
-        [`player-${player?.id ?? "empty"}`]: true,
       })}
       style={style}
       onClick={() => {
         onPlay(number);
       }}
     >
-      <span>{player?.mark ?? nextPlayer?.mark}</span>
+      <span>{mark}</span>
     </div>
   );
 };
@@ -28,7 +30,7 @@ Square.propTypes = {
   square: PropTypes.object,
   number: PropTypes.number.isRequired,
   onPlay: PropTypes.func.isRequired,
-  nextPlayer: PropTypes.object,
+  mark: PropTypes.string,
 };
 
 export default Square;

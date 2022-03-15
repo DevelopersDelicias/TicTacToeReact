@@ -9,7 +9,7 @@ const Board = ({ board: squares, onPlay, nextPlayer }) => {
       number={index + 1}
       key={index + 1}
       onPlay={onPlay}
-      nextPlayer={nextPlayer}
+      mark={square?.mark ?? nextPlayer?.mark}
     />
   );
   return <div className="board">{squares.map(toSquare)}</div>;
