@@ -3,19 +3,16 @@ import PropTypes from "prop-types";
 import Square from "./Square";
 
 const Board = ({ board: squares, onPlay, nextPlayer }) => {
-  return (
-    <div className="board">
-      {squares.map((square, index) => (
-        <Square
-          square={square}
-          number={index + 1}
-          key={index + 1}
-          onPlay={onPlay}
-          nextPlayer={nextPlayer}
-        />
-      ))}
-    </div>
+  const toSquare = (square, index) => (
+    <Square
+      square={square}
+      number={index + 1}
+      key={index + 1}
+      onPlay={onPlay}
+      nextPlayer={nextPlayer}
+    />
   );
+  return <div className="board">{squares.map(toSquare)}</div>;
 };
 
 Board.propTypes = {

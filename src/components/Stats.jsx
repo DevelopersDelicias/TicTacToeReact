@@ -12,7 +12,7 @@ const Section = ({ label, message }) => {
 
 Section.propTypes = {
   label: PropTypes.string.isRequired,
-  message: PropTypes.string.isRequired,
+  message: PropTypes.any.isRequired,
 };
 
 const getPlayerMessage = (player) =>
