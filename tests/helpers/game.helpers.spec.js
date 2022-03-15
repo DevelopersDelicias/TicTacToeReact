@@ -47,16 +47,16 @@ describe("Game Helpers", () => {
   });
 
   describe("getWinner", () => {
-    const EMPTY = null;
-    const PLAYER_1 = { id: 1, mark: "X", bgColor: "#dc685a" };
-    const PLAYER_2 = { id: 2, mark: "O", bgColor: "#ecaf4f" };
+    const ___________ = null;
+    const _____X_____ = { id: 1, mark: "X", bgColor: "#dc685a" };
+    const _____O_____ = { id: 2, mark: "O", bgColor: "#ecaf4f" };
     const NO_WINNER = undefined;
 
     it("should return no winner if the board has no winner", () => {
       const board = [
-        ...[PLAYER_1, PLAYER_2, PLAYER_1],
-        ...[EMPTY, EMPTY, EMPTY],
-        ...[PLAYER_2, PLAYER_1, EMPTY],
+        ...[_____X_____, _____O_____, _____X_____],
+        ...[___________, ___________, ___________],
+        ...[_____O_____, _____X_____, ___________],
       ];
 
       const winner = getWinner(board);
@@ -66,9 +66,9 @@ describe("Game Helpers", () => {
 
     it("should return no winner if the board has only empty positions", () => {
       const board = [
-        ...[EMPTY, EMPTY, EMPTY],
-        ...[EMPTY, EMPTY, EMPTY],
-        ...[EMPTY, EMPTY, EMPTY],
+        ...[___________, ___________, ___________],
+        ...[___________, ___________, ___________],
+        ...[___________, ___________, ___________],
       ];
 
       const winner = getWinner(board);
@@ -78,98 +78,98 @@ describe("Game Helpers", () => {
 
     it("should return Player 1 as winner when the first row is completed", () => {
       const board = [
-        ...[PLAYER_1, PLAYER_1, PLAYER_1],
-        ...[EMPTY, EMPTY, PLAYER_2],
-        ...[PLAYER_2, PLAYER_1, PLAYER_2],
+        ...[_____X_____, _____X_____, _____X_____],
+        ...[___________, ___________, _____O_____],
+        ...[_____O_____, _____X_____, _____O_____],
       ];
 
       const winner = getWinner(board);
 
-      expect(winner).toEqual(PLAYER_1);
+      expect(winner).toEqual(_____X_____);
     });
 
     it("should return Player 2 as winner when the second row is completed", () => {
       const board = [
-        ...[PLAYER_1, PLAYER_1, PLAYER_2],
-        ...[PLAYER_2, PLAYER_2, PLAYER_2],
-        ...[PLAYER_1, PLAYER_1, EMPTY],
+        ...[_____X_____, _____X_____, _____O_____],
+        ...[_____O_____, _____O_____, _____O_____],
+        ...[_____X_____, _____X_____, ___________],
       ];
 
       const winner = getWinner(board);
 
-      expect(winner).toEqual(PLAYER_2);
+      expect(winner).toEqual(_____O_____);
     });
 
     it("should return Player 1 as winner when the third row is completed", () => {
       const board = [
-        ...[PLAYER_1, EMPTY, PLAYER_2],
-        ...[EMPTY, PLAYER_2, PLAYER_2],
-        ...[PLAYER_1, PLAYER_1, PLAYER_1],
+        ...[_____X_____, ___________, _____O_____],
+        ...[___________, _____O_____, _____O_____],
+        ...[_____X_____, _____X_____, _____X_____],
       ];
 
       const winner = getWinner(board);
 
-      expect(winner).toEqual(PLAYER_1);
+      expect(winner).toEqual(_____X_____);
     });
 
     it("should return Player 2 as winner when the first column is completed", () => {
       const board = [
-        ...[PLAYER_2, EMPTY, PLAYER_2],
-        ...[PLAYER_2, PLAYER_1, PLAYER_1],
-        ...[PLAYER_2, PLAYER_1, PLAYER_1],
+        ...[_____O_____, ___________, _____O_____],
+        ...[_____O_____, _____X_____, _____X_____],
+        ...[_____O_____, _____X_____, _____X_____],
       ];
 
       const winner = getWinner(board);
 
-      expect(winner).toEqual(PLAYER_2);
+      expect(winner).toEqual(_____O_____);
     });
 
     it("should return Player 1 as winner when the second column is completed", () => {
       const board = [
-        ...[PLAYER_2, PLAYER_1, PLAYER_2],
-        ...[PLAYER_2, PLAYER_1, EMPTY],
-        ...[PLAYER_1, PLAYER_1, EMPTY],
+        ...[_____O_____, _____X_____, _____O_____],
+        ...[_____O_____, _____X_____, ___________],
+        ...[_____X_____, _____X_____, ___________],
       ];
 
       const winner = getWinner(board);
 
-      expect(winner).toEqual(PLAYER_1);
+      expect(winner).toEqual(_____X_____);
     });
 
     it("should return Player 2 as winner when the third column is completed", () => {
       const board = [
-        ...[PLAYER_1, PLAYER_1, PLAYER_2],
-        ...[EMPTY, PLAYER_1, PLAYER_2],
-        ...[PLAYER_1, EMPTY, PLAYER_2],
+        ...[_____X_____, _____X_____, _____O_____],
+        ...[___________, _____X_____, _____O_____],
+        ...[_____X_____, ___________, _____O_____],
       ];
 
       const winner = getWinner(board);
 
-      expect(winner).toEqual(PLAYER_2);
+      expect(winner).toEqual(_____O_____);
     });
 
     it("should return Player 1 as winner when the first diagonal is completed", () => {
       const board = [
-        ...[PLAYER_1, PLAYER_1, PLAYER_2],
-        ...[EMPTY, PLAYER_1, PLAYER_2],
-        ...[PLAYER_2, EMPTY, PLAYER_1],
+        ...[_____X_____, _____X_____, _____O_____],
+        ...[___________, _____X_____, _____O_____],
+        ...[_____O_____, ___________, _____X_____],
       ];
 
       const winner = getWinner(board);
 
-      expect(winner).toEqual(PLAYER_1);
+      expect(winner).toEqual(_____X_____);
     });
 
     it("should return Player 2 as winner when the second diagonal is completed", () => {
       const board = [
-        ...[PLAYER_1, PLAYER_1, PLAYER_2],
-        ...[EMPTY, PLAYER_2, PLAYER_2],
-        ...[PLAYER_2, PLAYER_1, PLAYER_1],
+        ...[_____X_____, _____X_____, _____O_____],
+        ...[___________, _____O_____, _____O_____],
+        ...[_____O_____, _____X_____, _____X_____],
       ];
 
       const winner = getWinner(board);
 
-      expect(winner).toEqual(PLAYER_2);
+      expect(winner).toEqual(_____O_____);
     });
   });
 });
