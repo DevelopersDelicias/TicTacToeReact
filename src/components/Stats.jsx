@@ -15,20 +15,15 @@ Section.propTypes = {
   message: PropTypes.string.isRequired,
 };
 
+const getPlayerMessage = (player) =>
+  player ? `Player ${player.id} (${player.mark})` : "Nobody";
+
 const Stats = ({ nextPlayer, winner, marksInBoard }) => {
   return (
     <div className="stats">
-      <Section
-        label="Next Player: "
-        message={
-          nextPlayer ? `Player ${nextPlayer.id} (${nextPlayer.mark})` : "Nobody"
-        }
-      />
-      <Section label="Number of marks: " message={marksInBoard} />
-      <Section
-        label="Winner: "
-        message={winner ? `Player ${winner.id} (${winner.mark})` : "Nobody"}
-      />
+      <Section label="Next Player:" message={getPlayerMessage(nextPlayer)} />
+      <Section label="Number of marks:" message={marksInBoard} />
+      <Section label="Winner:" message={getPlayerMessage(winner)} />
     </div>
   );
 };
