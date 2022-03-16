@@ -17,21 +17,21 @@ export default function useGame() {
   const marksInBoard = board.filter(s => s != NO_PLAYER).length
 
   useEffect(() => {
-    if (
-      marksInBoard >= MINIMUM_PLACED_MARKS_TO_WIN &&
-      marksInBoard < NUMBER_OF_POSITIONS
-    ) {
-      const theWinner = getWinner(board)
-
-      if (theWinner) {
-        setWinner(theWinner)
-        setNextPlayer(NO_PLAYER)
-      }
+    if (marksInBoard < MINIMUM_PLACED_MARKS_TO_WIN) {
+      return
     }
 
     if (marksInBoard === NUMBER_OF_POSITIONS) {
       alert('DRAW GAME!')
       handleOnReset()
+      return
+    }
+
+    const theWinner = getWinner(board)
+
+    if (theWinner) {
+      setWinner(theWinner)
+      setNextPlayer(NO_PLAYER)
     }
   }, [board])
 
