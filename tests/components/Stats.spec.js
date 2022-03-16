@@ -5,6 +5,7 @@ import Stats from "../../src/components/Stats";
 import { configure, shallow } from "enzyme";
 import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
 import Section from "../../src/components/Section";
+const helpers = require("../../src/helpers/game.helpers");
 
 configure({ adapter: new Adapter() });
 
@@ -24,35 +25,70 @@ describe("Stats", () => {
     expect(wrapper.find(Section)).toHaveLength(3);
   });
 
-  it("renders next player section as first section", () => {
-    const wrapper = shallow(<Stats marksInBoard={0} />);
-
+  describe("first section", () => {
+    const mock = jest.spyOn(helpers, "getPlayerMessage");
+    mock.mockReturnValue("Test Player");
+    const nextPlayer = { id: 1, mark: "X" };
+    const wrapper = shallow(<Stats marksInBoard={0} nextPlayer={nextPlayer} />);
     const firstSection = wrapper.find(Section).at(0);
 
-    expect(firstSection.prop("id")).toBe("nextPlayer");
-    expect(firstSection.prop("label")).toBe("Next Player:");
-    expect(firstSection.prop("message")).toBe("Nobody");
+    it("has nextPlayer as id", () => {
+      expect(firstSection.prop("id")).toBe("nextPlayer");
+    });
+
+    it("has Next Player: as label", () => {
+      expect(firstSection.prop("label")).toBe("Next Player:");
+    });
+
+    it("calls function with nextPlayer param", () => {
+      expect(mock).toHaveBeenNthCalledWith(1, nextPlayer);
+    });
+
+    it("has message from getPlayerMessage function", () => {
+      expect(firstSection.prop("message")).toBe("Test Player");
+    });
   });
 
-  it("renders number of marks section as second section", () => {
+  describe("second section", () => {
     const marksInBoard = Math.floor(Math.random() * 100);
     const wrapper = shallow(<Stats marksInBoard={marksInBoard} />);
+    const section = wrapper.find(Section).at(1);
 
-    const secondSection = wrapper.find(Section).at(1);
+    it("has winner as id", () => {
+      expect(section.prop("id")).toBe("numberOfMarks");
+    });
 
-    expect(secondSection.prop("id")).toBe("numberOfMarks");
-    expect(secondSection.prop("label")).toBe("Number of marks:");
-    expect(secondSection.prop("message")).toBe(marksInBoard);
+    it("has Winner: as label", () => {
+      expect(section.prop("label")).toBe("Number of marks:");
+    });
+
+    it("has message from getPlayerMessage function", () => {
+      expect(section.prop("message")).toBe(marksInBoard);
+    });
   });
 
-  it("renders winner section as third section", () => {
-    const wrapper = shallow(<Stats marksInBoard={0} />);
+  describe("third section", () => {
+    const mock = jest.spyOn(helpers, "getPlayerMessage");
+    mock.mockReturnValue("Player who won");
+    const winner = { id: 1, mark: "X" };
+    const wrapper = shallow(<Stats marksInBoard={0} winner={winner} />);
+    const section = wrapper.find(Section).at(2);
 
-    const thirdSection = wrapper.find(Section).at(2);
+    it("has winner as id", () => {
+      expect(section.prop("id")).toBe("winner");
+    });
 
-    expect(thirdSection.prop("id")).toBe("winner");
-    expect(thirdSection.prop("label")).toBe("Winner:");
-    expect(thirdSection.prop("message")).toBe("Nobody");
+    it("has Winner: as label", () => {
+      expect(section.prop("label")).toBe("Winner:");
+    });
+
+    it("calls function with nextPlayer param", () => {
+      expect(mock).toHaveBeenNthCalledWith(1, winner);
+    });
+
+    it("has message from getPlayerMessage function", () => {
+      expect(section.prop("message")).toBe("Player who won");
+    });
   });
 
   it("should display a label for the Next Player", () => {
