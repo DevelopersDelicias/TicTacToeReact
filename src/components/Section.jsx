@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 const Section = ({ id, label, message }) => {
   return (
-    <div className="section" id={id}>
+    <div className='section' id={id}>
       <label>{label}</label>
       <span>{message}</span>
     </div>

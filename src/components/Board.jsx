@@ -12,7 +12,7 @@ const Board = ({ board: squares, onPlay, nextPlayer }) => {
       mark={square?.mark ?? nextPlayer?.mark}
     />
   )
-  return <div className="board">{squares.map(toSquare)}</div>
+  return <div className='board'>{squares.map(toSquare)}</div>
 }
 
 Board.propTypes = {

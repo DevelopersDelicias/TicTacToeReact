@@ -20,6 +20,7 @@ module.exports = {
   rules: {
     'react/jsx-uses-react': 'error',
     'react/jsx-uses-vars': 'error',
+    'jsx-quotes': ['error', 'prefer-single'],
     quotes: ['error', 'single', { avoidEscape: false }],
     'comma-dangle': ['error', 'always-multiline'],
     'max-len': [

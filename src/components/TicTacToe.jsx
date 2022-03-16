@@ -58,7 +58,7 @@ const TicTacToe = () => {
   }
 
   return (
-    <div className="tic-tac-toe">
+    <div className='tic-tac-toe'>
       <Stats
         nextPlayer={nextPlayer}
         winner={winner}
