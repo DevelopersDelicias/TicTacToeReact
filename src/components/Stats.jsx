@@ -1,7 +1,7 @@
-import React from 'react'
 import PropTypes from 'prop-types'
-import Section from './Section'
+import React from 'react'
 import { getPlayerMessage } from '../helpers/game.helpers'
+import Section from './Section'
 
 const Stats = ({ nextPlayer, winner, marksInBoard }) => {
   return (

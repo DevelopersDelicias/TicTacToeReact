@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import Stats from './Stats'
-import Board from './Board'
-import ToolBar from './ToolBar'
 import { getWinner } from '../helpers/game.helpers'
+import Board from './Board'
+import Stats from './Stats'
+import ToolBar from './ToolBar'
 
 const NO_PLAYER = null
 const PLAYER_1 = { id: 1, mark: 'X', bgColor: '#dc685a' }

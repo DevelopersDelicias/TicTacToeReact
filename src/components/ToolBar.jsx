@@ -1,5 +1,5 @@
+import { func } from 'prop-types'
 import React from 'react'
-import PropTypes from 'prop-types'
 
 const ToolBar = ({ onReset }) => {
   return (
@@ -12,7 +12,7 @@ const ToolBar = ({ onReset }) => {
 }
 
 ToolBar.propTypes = {
-  onReset: PropTypes.func.isRequired,
+  onReset: func.isRequired,
 }
 
 export default ToolBar
