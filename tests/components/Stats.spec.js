@@ -2,12 +2,9 @@ import React from "react";
 import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import Stats from "../../src/components/Stats";
-import { configure, shallow } from "enzyme";
-import Adapter from "@wojtekmaj/enzyme-adapter-react-17";
+import { shallow } from "enzyme";
 import Section from "../../src/components/Section";
 const helpers = require("../../src/helpers/game.helpers");
-
-configure({ adapter: new Adapter() });
 
 describe("Stats", () => {
   it("renders", () => {
