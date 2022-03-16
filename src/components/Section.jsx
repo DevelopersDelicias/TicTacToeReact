@@ -1,5 +1,5 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React from 'react'
+import PropTypes from 'prop-types'
 
 const Section = ({ id, label, message }) => {
   return (
@@ -7,13 +7,13 @@ const Section = ({ id, label, message }) => {
       <label>{label}</label>
       <span>{message}</span>
     </div>
-  );
-};
+  )
+}
 
 Section.propTypes = {
   id: PropTypes.string.isRequired,
   label: PropTypes.string.isRequired,
   message: PropTypes.any.isRequired,
-};
+}
 
-export default Section;
+export default Section
