@@ -2,8 +2,10 @@ module.exports = {
   env: {
     browser: true,
     es2021: true,
+    node: true,
   },
   extends: [
+    "eslint:recommended",
     "plugin:react/recommended",
     // 'airbnb',
   ],
@@ -15,5 +17,13 @@ module.exports = {
     sourceType: "module",
   },
   plugins: ["react"],
-  rules: {},
+  rules: {
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error",
+  },
+  settings: {
+    react: {
+      version: "detect",
+    },
+  },
 };
