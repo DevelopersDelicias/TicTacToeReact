@@ -1,12 +1,28 @@
 export const getPlayerMessage = player =>
   player ? `Player ${player.id} (${player.mark})` : 'Nobody'
 
-const array = new Array(3).fill(0)
+const byRow = () => {
+  const rows = []
+  for (let i = 0; i < 3; i++) {
+    const pos = i * 3
+    rows.push([pos, pos + 1, pos + 2])
+  }
+  return rows
+}
+
+const byColumn = () => {
+  const columns = []
+  for (let i = 0; i < 3; i++) {
+    columns.push([i, i + 3, i + 6])
+  }
+  return columns
+}
 
 export const combinations = [
-  ...array.map((n, index) => [index * 3, index * 3 + 1, index * 3 + 2]),
-  ...array.map((n, index) => [index, index + 3, index + 6]),
-  ...[0, 2].map(n => [n, n + 4 / (n || 1), n + 8 / (n || 1)]),
+  ...byRow(),
+  ...byColumn(),
+  [0, 4, 8], // first diagonal
+  [2, 4, 6], // second diagonal
 ]
 
 export const getWinner = squares => {
