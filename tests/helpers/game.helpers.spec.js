@@ -50,7 +50,7 @@ describe('Game Helpers', () => {
     const ___________ = null
     const _____X_____ = { id: 1, mark: 'X', bgColor: '#dc685a' }
     const _____O_____ = { id: 2, mark: 'O', bgColor: '#ecaf4f' }
-    const NO_WINNER = undefined
+    const NO_WINNER = null
 
     it('should return no winner if the board has no winner', () => {
       const board = [

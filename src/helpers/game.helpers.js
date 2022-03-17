@@ -1,3 +1,5 @@
+const NO_WINNER = null
+
 export const getPlayerMessage = player =>
   player ? `Player ${player.id} (${player.mark})` : 'Nobody'
 
@@ -25,13 +27,13 @@ export const getCombinations = () => [
   [2, 4, 6], // second diagonal
 ]
 
-export const getWinner = squares => {
-  const winner = getCombinations().find(c => {
-    const player = squares[c[0]]
-    return c.every(number => {
-      return squares[number] !== null && squares[number].id === player.id
-    })
-  })
-
-  return winner && squares[winner[0]]
+export const getWinner = board => {
+  const toPlayer = position => board[position]
+  for (const combination of getCombinations()) {
+    const players = [...new Set(combination.map(toPlayer))]
+    if (players.length === 1) {
+      return players[0]
+    }
+  }
+  return NO_WINNER
 }
