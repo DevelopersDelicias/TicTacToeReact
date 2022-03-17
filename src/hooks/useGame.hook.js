@@ -5,12 +5,12 @@ const NO_PLAYER = null
 const PLAYER_1 = { id: 1, mark: 'X', bgColor: '#dc685a' }
 const PLAYER_2 = { id: 2, mark: 'O', bgColor: '#ecaf4f' }
 
-const NUMBER_OF_POSITIONS = 9
-const MINIMUM_PLACED_MARKS_TO_WIN = 5
-const DEFAULT_BOARD = new Array(NUMBER_OF_POSITIONS).fill(NO_PLAYER)
 const DEFAULT_PLAYER = PLAYER_1
 
-export default function useGame() {
+export default function useGame(marksToWin = 3) {
+  const NUMBER_OF_POSITIONS = marksToWin * marksToWin
+  const MINIMUM_PLACED_MARKS_TO_WIN = 2 * marksToWin - 1
+  const DEFAULT_BOARD = new Array(NUMBER_OF_POSITIONS).fill(NO_PLAYER)
   const [board, setBoard] = useState(DEFAULT_BOARD)
   const [nextPlayer, setNextPlayer] = useState(PLAYER_1)
   const [winner, setWinner] = useState(NO_PLAYER)

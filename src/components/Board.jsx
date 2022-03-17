@@ -3,6 +3,10 @@ import React from 'react'
 import Square from './Square'
 
 const Board = ({ board: squares, onPlay, nextPlayer }) => {
+  const marksToWin = Math.sqrt(squares.length)
+  const style = {
+    gridTemplateColumns: `repeat(${marksToWin}, auto)`,
+  }
   const toSquare = (square, index) => (
     <Square
       square={square}
@@ -10,9 +14,14 @@ const Board = ({ board: squares, onPlay, nextPlayer }) => {
       key={index + 1}
       onPlay={onPlay}
       mark={square?.mark ?? nextPlayer?.mark}
+      marksToWin={marksToWin}
     />
   )
-  return <div className='board'>{squares.map(toSquare)}</div>
+  return (
+    <div className='board' style={style}>
+      {squares.map(toSquare)}
+    </div>
+  )
 }
 
 Board.propTypes = {

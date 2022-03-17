@@ -12,7 +12,7 @@ const TicTacToe = () => {
     board,
     handleSelectPlayer,
     handleOnReset,
-  } = useGame()
+  } = useGame(3)
   return (
     <div className='tic-tac-toe'>
       <Stats
