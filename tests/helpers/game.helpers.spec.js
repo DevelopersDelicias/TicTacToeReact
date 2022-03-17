@@ -32,16 +32,48 @@ describe('Game Helpers', () => {
   })
 
   describe('getCombinations', () => {
-    it('should get all possible combinations to win', () => {
-      expect(getCombinations()).toEqual([
-        [0, 1, 2], // first row
-        [3, 4, 5], // second row
-        [6, 7, 8], // third row
-        [0, 3, 6], // first column
-        [1, 4, 7], // second column
-        [2, 5, 8], // third column
-        [0, 4, 8], // first diagonal
-        [2, 4, 6], // second diagonal
+    it('should get all possible combinations to win 3x3', () => {
+      expect(getCombinations(3)).toEqual([
+        [0, 1, 2], // 1st row
+        [3, 4, 5], // 2nd row
+        [6, 7, 8], // 3rd row
+        [0, 3, 6], // 1st column
+        [1, 4, 7], // 2nd column
+        [2, 5, 8], // 3rd column
+        [0, 4, 8], // 1st diagonal
+        [2, 4, 6], // 2nd diagonal
+      ])
+    })
+
+    it('should get all possible combinations to win 4x4', () => {
+      expect(getCombinations(4)).toEqual([
+        [0, 1, 2, 3], // 1st row
+        [4, 5, 6, 7], // 2nd row
+        [8, 9, 10, 11], // 3rd row
+        [12, 13, 14, 15], // 4th row
+        [0, 4, 8, 12], // 1st column
+        [1, 5, 9, 13], // 2nd column
+        [2, 6, 10, 14], // 3rd column
+        [3, 7, 11, 15], // 4th column
+        [0, 5, 10, 15], // 1st diagonal
+        [3, 6, 9, 12], // 2nd diagonal
+      ])
+    })
+
+    it('should get all possible combinations to win 5x5', () => {
+      expect(getCombinations(5)).toEqual([
+        [0, 1, 2, 3, 4], // 1st row
+        [5, 6, 7, 8, 9], // 2nd row
+        [10, 11, 12, 13, 14], // 3rd row
+        [15, 16, 17, 18, 19], // 4th row
+        [20, 21, 22, 23, 24], // 5th row
+        [0, 5, 10, 15, 20], // 1st column
+        [1, 6, 11, 16, 21], // 2nd column
+        [2, 7, 12, 17, 22], // 3rd column
+        [3, 8, 13, 18, 23], // 4th column
+        [4, 9, 14, 19, 24], // 5th column
+        [0, 6, 12, 18, 24], // 1st diagonal
+        [4, 8, 12, 16, 20], // 2nd diagonal
       ])
     })
   })
