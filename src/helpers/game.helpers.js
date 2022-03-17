@@ -57,8 +57,9 @@ export const getWinner = board => {
   const marksToWin = Math.sqrt(board.length)
   for (const combination of getCombinations(marksToWin)) {
     const players = [...new Set(combination.map(toPlayer))]
-    if (players.length === 1) {
-      return players[0]
+    const player = players[0]
+    if (players.length === 1 && player !== null) {
+      return player
     }
   }
   return NO_WINNER
