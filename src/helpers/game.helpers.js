@@ -18,7 +18,7 @@ const byColumn = () => {
   return columns
 }
 
-export const combinations = [
+export const getCombinations = () => [
   ...byRow(),
   ...byColumn(),
   [0, 4, 8], // first diagonal
@@ -26,7 +26,7 @@ export const combinations = [
 ]
 
 export const getWinner = squares => {
-  const winner = combinations.find(c => {
+  const winner = getCombinations().find(c => {
     const player = squares[c[0]]
     return c.every(number => {
       return squares[number] !== null && squares[number].id === player.id

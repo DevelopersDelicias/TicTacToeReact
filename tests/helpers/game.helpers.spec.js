@@ -1,5 +1,5 @@
 import {
-  combinations,
+  getCombinations,
   getPlayerMessage,
   getWinner,
 } from '../../src/helpers/game.helpers'
@@ -31,9 +31,9 @@ describe('Game Helpers', () => {
     })
   })
 
-  describe('combinations', () => {
+  describe('getCombinations', () => {
     it('should get all possible combinations to win', () => {
-      expect(combinations).toEqual([
+      expect(getCombinations()).toEqual([
         [0, 1, 2], // first row
         [3, 4, 5], // second row
         [6, 7, 8], // third row
