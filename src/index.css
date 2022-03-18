@@ -12,12 +12,6 @@ body {
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
 }
 
-.board {
-  display: grid;
-  grid-gap: 20px;
-  padding: 10px 20px;
-}
-
 .square {
   height: 0;
   padding-bottom: 100%;
@@ -49,13 +43,11 @@ body {
 }
 
 .player-1 {
-  background-color: #dc685a;
   cursor: not-allowed;
   color: #fff;
 }
 
 .player-2 {
-  background-color: #ecaf4f;
   cursor: not-allowed;
   color: #fff;
 }

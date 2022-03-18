@@ -6,6 +6,9 @@ const Board = ({ board: squares, onPlay, nextPlayer }) => {
   const marksToWin = Math.sqrt(squares.length)
   const style = {
     gridTemplateColumns: `repeat(${marksToWin}, auto)`,
+    display: 'grid',
+    gridGap: '20px',
+    padding: '10px 20px',
   }
   const toSquare = (square, index) => (
     <Square
