@@ -203,5 +203,17 @@ describe('Game Helpers', () => {
 
       expect(winner).toEqual(_____O_____)
     })
+
+    it('should return Player 1 as winner when all squares are completed', () => {
+      const board = [
+        ...[_____X_____, _____X_____, _____O_____],
+        ...[_____X_____, _____O_____, _____O_____],
+        ...[_____X_____, _____O_____, _____X_____],
+      ]
+
+      const winner = getWinner(board)
+
+      expect(winner).toEqual(_____X_____)
+    })
   })
 })
