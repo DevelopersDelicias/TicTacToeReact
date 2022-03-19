@@ -21,17 +21,17 @@ export default function useGame(marksToWin = 3) {
       return
     }
 
-    if (marksInBoard === NUMBER_OF_POSITIONS) {
-      alert('DRAW GAME!')
-      handleOnReset()
-      return
-    }
-
     const theWinner = getWinner(board)
 
     if (theWinner) {
       setWinner(theWinner)
       setNextPlayer(NO_PLAYER)
+      return
+    }
+
+    if (marksInBoard === NUMBER_OF_POSITIONS) {
+      alert('DRAW GAME!')
+      handleOnReset()
     }
   }, [board])
 
