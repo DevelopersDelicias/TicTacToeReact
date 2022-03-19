@@ -32,7 +32,6 @@ export default function useGame(marksToWin = 3) {
     if (marksInBoard === NUMBER_OF_POSITIONS) {
       alert('DRAW GAME!')
       handleOnReset()
-      return
     }
   }, [board])
 
