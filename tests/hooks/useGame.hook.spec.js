@@ -15,7 +15,7 @@ const createGame = marksToWin => {
 const playGame = (game, movements) => {
   for (const movement of movements) {
     act(() => {
-      game.handleSelectPlayer(movement)
+      game.select(movement)
     })
   }
 }
@@ -47,15 +47,15 @@ describe('useGame hook', () => {
     })
 
     it('there is a function to handle when a player makes a movement', () => {
-      const { handleSelectPlayer } = createGame(3)
+      const { select } = createGame(3)
 
-      expect(handleSelectPlayer).toBeInstanceOf(Function)
+      expect(select).toBeInstanceOf(Function)
     })
 
     it('there is a function to reset the game', () => {
-      const { handleOnReset } = createGame(3)
+      const { reset } = createGame(3)
 
-      expect(handleOnReset).toBeInstanceOf(Function)
+      expect(reset).toBeInstanceOf(Function)
     })
   })
 

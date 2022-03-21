@@ -5,14 +5,7 @@ import Stats from './Stats'
 import ToolBar from './ToolBar'
 
 const TicTacToe = () => {
-  const {
-    nextPlayer,
-    winner,
-    marksInBoard,
-    board,
-    handleSelectPlayer,
-    handleOnReset,
-  } = useGame(3)
+  const { nextPlayer, winner, marksInBoard, board, select, reset } = useGame(3)
   return (
     <div className='tic-tac-toe'>
       <Stats
@@ -20,12 +13,8 @@ const TicTacToe = () => {
         winner={winner}
         marksInBoard={marksInBoard}
       />
-      <Board
-        board={board}
-        onPlay={handleSelectPlayer}
-        nextPlayer={nextPlayer}
-      />
-      <ToolBar onReset={handleOnReset} />
+      <Board board={board} onPlay={select} nextPlayer={nextPlayer} />
+      <ToolBar onReset={reset} />
     </div>
   )
 }

@@ -31,24 +31,25 @@ export default function useGame(marksToWin = 3) {
 
     if (marksInBoard === NUMBER_OF_POSITIONS) {
       alert('DRAW GAME!')
-      handleOnReset()
+      reset()
     }
   }, [board])
 
-  const handleSelectPlayer = number => {
-    const selectedPlayer = board[number - 1]
+  const select = position => {
+    const index = position - 1
+    const selectedPlayer = board[index]
 
     if (selectedPlayer != NO_PLAYER || winner != NO_PLAYER) {
       return
     }
     const modifiedBoard = [...board]
-    modifiedBoard[number - 1] = nextPlayer
+    modifiedBoard[index] = nextPlayer
 
     setBoard(modifiedBoard)
     setNextPlayer(prev => (prev.id === PLAYER_1.id ? PLAYER_2 : PLAYER_1))
   }
 
-  const handleOnReset = () => {
+  const reset = () => {
     setBoard(DEFAULT_BOARD)
     setWinner(NO_PLAYER)
     setNextPlayer(DEFAULT_PLAYER)
@@ -59,7 +60,7 @@ export default function useGame(marksToWin = 3) {
     winner,
     marksInBoard,
     board,
-    handleSelectPlayer,
-    handleOnReset,
+    select,
+    reset,
   }
 }
