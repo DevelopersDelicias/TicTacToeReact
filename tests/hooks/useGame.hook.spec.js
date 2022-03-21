@@ -59,6 +59,18 @@ describe('useGame hook', () => {
     })
   })
 
+  it('should change next player after select a movement', () => {
+    const game = createGame(3)
+
+    playGame(game, [1])
+
+    expect(game.nextPlayer).toEqual({ id: 2, mark: 'O', bgColor: '#ecaf4f' })
+
+    playGame(game, [2])
+
+    expect(game.nextPlayer).toEqual({ id: 1, mark: 'X', bgColor: '#dc685a' })
+  })
+
   it('should have a winner when all movements were done and someone won', () => {
     const game = createGame(3)
 

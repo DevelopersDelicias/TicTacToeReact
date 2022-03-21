@@ -46,7 +46,7 @@ export default function useGame(marksToWin = 3) {
     modifiedBoard[index] = nextPlayer
 
     setBoard(modifiedBoard)
-    setNextPlayer(prev => (prev.id === PLAYER_1.id ? PLAYER_2 : PLAYER_1))
+    setNextPlayer(prev => (prev === PLAYER_1 ? PLAYER_2 : PLAYER_1))
   }
 
   const reset = () => {
