@@ -14,7 +14,7 @@ export default function useGame(marksToWin) {
   const [board, setBoard] = useState(DEFAULT_BOARD)
   const [nextPlayer, setNextPlayer] = useState(PLAYER_1)
   const [winner, setWinner] = useState(NO_PLAYER)
-  const marksInBoard = board.filter(s => s != NO_PLAYER).length
+  const marksInBoard = board.filter(player => player != NO_PLAYER).length
 
   useEffect(() => {
     if (marksInBoard < MINIMUM_PLACED_MARKS_TO_WIN) {
