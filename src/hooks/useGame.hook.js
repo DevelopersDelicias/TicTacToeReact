@@ -7,7 +7,7 @@ const PLAYER_2 = { id: 2, mark: 'O', bgColor: '#ecaf4f' }
 
 const DEFAULT_PLAYER = PLAYER_1
 
-export default function useGame(marksToWin = 3) {
+export default function useGame(marksToWin) {
   const NUMBER_OF_POSITIONS = marksToWin * marksToWin
   const MINIMUM_PLACED_MARKS_TO_WIN = 2 * marksToWin - 1
   const DEFAULT_BOARD = new Array(NUMBER_OF_POSITIONS).fill(NO_PLAYER)

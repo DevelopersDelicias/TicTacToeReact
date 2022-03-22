@@ -78,4 +78,44 @@ describe('useGame hook', () => {
 
     expect(game.winner).not.toBeNull()
   })
+
+  it('should not change the mark when the position is already taken', () => {
+    const game = createGame(3)
+
+    playGame(game, [1, 2, 1])
+
+    expect(game.marksInBoard).toEqual(2)
+  })
+
+  it('should not change the next player when the position was already taken', () => {
+    const game = createGame(3)
+
+    playGame(game, [1, 2, 1])
+
+    expect(game.nextPlayer).toEqual({ id: 1, mark: 'X', bgColor: '#dc685a' })
+  })
+
+  describe('when game is reset', () => {
+    let game = null
+
+    beforeEach(() => {
+      game = createGame(3)
+
+      playGame(game, [1, 3, 2, 5, 4, 6, 9, 8, 7])
+
+      act(() => game.reset())
+    })
+
+    it('should set the marks in board to 0', () => {
+      expect(game.marksInBoard).toEqual(0)
+    })
+
+    it('should set the winner to null', () => {
+      expect(game.winner).toBeNull()
+    })
+
+    it('should set the next player to the player 1', () => {
+      expect(game.nextPlayer).toEqual({ id: 1, mark: 'X', bgColor: '#dc685a' })
+    })
+  })
 })
