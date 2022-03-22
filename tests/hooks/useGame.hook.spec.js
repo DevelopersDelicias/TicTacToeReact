@@ -118,4 +118,30 @@ describe('useGame hook', () => {
       expect(game.nextPlayer).toEqual({ id: 1, mark: 'X', bgColor: '#dc685a' })
     })
   })
+
+  describe('when game is drawn', () => {
+    let game = null
+
+    beforeEach(() => {
+      jest.spyOn(window, 'alert').mockImplementation(() => {})
+      game = createGame(3)
+      playGame(game, [1, 5, 4, 7, 3, 2, 8, 9, 6])
+    })
+
+    it('an alert is displayed', () => {
+      expect(window.alert).toHaveBeenNthCalledWith(1, 'DRAW GAME!')
+    })
+
+    it('should set the marks in board to 0', () => {
+      expect(game.marksInBoard).toEqual(0)
+    })
+
+    it('should set the winner to null', () => {
+      expect(game.winner).toBeNull()
+    })
+
+    it('should set the next player to the player 1', () => {
+      expect(game.nextPlayer).toEqual({ id: 1, mark: 'X', bgColor: '#dc685a' })
+    })
+  })
 })
