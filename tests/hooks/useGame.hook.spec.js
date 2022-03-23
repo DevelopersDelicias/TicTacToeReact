@@ -2,6 +2,8 @@ import { act, render } from '@testing-library/react'
 import * as React from 'react'
 import useGame from '../../src/hooks/useGame.hook'
 
+const helpers = require('../../src/helpers/game.helpers')
+
 const createGame = marksToWin => {
   const returnVal = {}
   function TestComponent() {
@@ -79,6 +81,16 @@ describe('useGame hook', () => {
     expect(game.winner).not.toBeNull()
   })
 
+  it('should not try to continue a game if there is a winner before all movements were done', () => {
+    const mock = jest.spyOn(helpers, 'getWinner')
+    const game = createGame(3)
+
+    playGame(game, [1, 4, 2, 7, 3, 5])
+
+    expect(mock).toHaveBeenCalledTimes(1)
+    mock.mockRestore()
+  })
+
   it('should not change the mark when the position is already taken', () => {
     const game = createGame(3)
 
@@ -93,6 +105,26 @@ describe('useGame hook', () => {
     playGame(game, [1, 2, 1])
 
     expect(game.nextPlayer).toEqual({ id: 1, mark: 'X', bgColor: '#dc685a' })
+  })
+
+  it('should not try to get a winner when at least 5 positions are placed', () => {
+    const mock = jest.spyOn(helpers, 'getWinner')
+    const game = createGame(3)
+
+    playGame(game, [1, 2, 3, 4])
+
+    expect(mock).not.toHaveBeenCalled()
+    mock.mockRestore()
+  })
+
+  it('should try to get a winner when 5 positions are placed', () => {
+    const mock = jest.spyOn(helpers, 'getWinner')
+    const game = createGame(3)
+
+    playGame(game, [1, 2, 3, 4, 5])
+
+    expect(mock).toHaveBeenCalledTimes(1)
+    mock.mockRestore()
   })
 
   describe('when game is reset', () => {
