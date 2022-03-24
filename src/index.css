@@ -4,14 +4,6 @@ body {
   padding: 0;
 }
 
-.tic-tac-toe {
-  width: 500px;
-  margin: 20px auto;
-  border: 3px solid #eee;
-  border-radius: 10px;
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
-}
-
 .square {
   height: 0;
   padding-bottom: 100%;
