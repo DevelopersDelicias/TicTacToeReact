@@ -60,14 +60,6 @@ body {
   opacity: 1;
 }
 
-label {
-  font-weight: 800;
-  width: 200px;
-  display: inline-block;
-  text-align: right;
-  margin-right: 40px;
-}
-
 .stats {
   padding-top: 10px;
 }
