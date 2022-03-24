@@ -12,17 +12,18 @@ const StyledMark = styled.span`
   transform: translateY(-50%) translateX(-50%);
 `
 
-const StyledDiv = styled.span`
+const StyledDiv = styled.div`
+  background-color: ${({ bgColor }) => bgColor};
+  border-radius: 10px;
+  box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.4);
+  color: #78bec5;
+  cursor: pointer;
+  font-size: ${({ fontSize }) => fontSize}px;
+  font-weight: bold;
   height: 0;
   padding-bottom: 100%;
-  border-radius: 10px;
-  background-color: #78bec5;
-  color: #78bec5;
-  text-align: center;
-  font-weight: bold;
-  cursor: pointer;
-  box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.4);
   position: relative;
+  text-align: center;
 
   &.empty:before {
     background-color: #78bec5 !important;
@@ -34,31 +35,24 @@ const StyledDiv = styled.span`
     color: rgba(215, 217, 221, 0.571) !important;
   }
 
-  &.player-1 {
-    cursor: not-allowed;
+  &.busy {
     color: #fff;
-  }
-
-  &.player-2 {
     cursor: not-allowed;
-    color: #fff;
   }
 `
 
 const Square = ({ square: player, number, onPlay, mark, marksToWin }) => {
-  const style = {
-    backgroundColor: player?.bgColor ?? DEFAULT_BACKGROUND_COLOR,
-    fontSize: Math.floor(293 / marksToWin),
-  }
-
-  const playerClassName = `player-${player?.id ?? 'empty'}`
+  const fontSize = Math.floor(293 / marksToWin)
+  const isEmpty = !player
 
   return (
     <StyledDiv
-      className={classNames(playerClassName, {
-        empty: !player,
+      bgColor={player?.bgColor ?? DEFAULT_BACKGROUND_COLOR}
+      fontSize={fontSize}
+      className={classNames({
+        empty: isEmpty,
+        busy: !isEmpty,
       })}
-      style={style}
       onClick={() => {
         onPlay(number)
       }}
