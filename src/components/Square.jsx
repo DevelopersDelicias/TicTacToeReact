@@ -51,6 +51,7 @@ const Square = ({ square: player, number, onPlay, mark, marksToWin }) => {
       onClick={() => {
         onPlay(number)
       }}
+      role='square'
     >
       <StyledMark>{mark}</StyledMark>
     </StyledDiv>
