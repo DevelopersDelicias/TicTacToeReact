@@ -7,12 +7,24 @@ const StyledDiv = styled.div`
   padding: 5px 20px;
   text-align: center;
 `
+
+const PrimaryButton = styled.button`
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+
+  background-color: blue;
+  color: #fff;
+  opacity: 0.8;
+
+  &:hover {
+    opacity: 1;
+  }
+`
 const ToolBar = ({ onReset }) => {
   return (
     <StyledDiv>
-      <button onClick={onReset} className='btn btn-primary'>
-        Reset Game
-      </button>
+      <PrimaryButton onClick={onReset}>Reset Game</PrimaryButton>
     </StyledDiv>
   )
 }
