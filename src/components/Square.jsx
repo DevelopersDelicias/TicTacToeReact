@@ -16,7 +16,7 @@ const StyledDiv = styled.div`
   background-color: ${({ bgColor }) => bgColor};
   border-radius: 10px;
   box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.4);
-  color: #78bec5;
+  color: ${DEFAULT_BACKGROUND_COLOR};
   cursor: pointer;
   font-size: ${({ fontSize }) => fontSize}px;
   font-weight: bold;
@@ -25,14 +25,9 @@ const StyledDiv = styled.div`
   position: relative;
   text-align: center;
 
-  &.empty:before {
-    background-color: #78bec5 !important;
-    color: #78bec5;
-  }
-
   &.empty:hover {
-    background-color: #3d4250 !important;
-    color: rgba(215, 217, 221, 0.571) !important;
+    background-color: #3d4250;
+    color: rgba(215, 217, 221, 0.571);
   }
 
   &.busy {
