@@ -12,6 +12,39 @@ const StyledMark = styled.span`
   transform: translateY(-50%) translateX(-50%);
 `
 
+const StyledDiv = styled.span`
+  height: 0;
+  padding-bottom: 100%;
+  border-radius: 10px;
+  background-color: #78bec5;
+  color: #78bec5;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 1rem 1rem rgba(0, 0, 0, 0.4);
+  position: relative;
+
+  &.empty:before {
+    background-color: #78bec5 !important;
+    color: #78bec5;
+  }
+
+  &.empty:hover {
+    background-color: #3d4250 !important;
+    color: rgba(215, 217, 221, 0.571) !important;
+  }
+
+  &.player-1 {
+    cursor: not-allowed;
+    color: #fff;
+  }
+
+  &.player-2 {
+    cursor: not-allowed;
+    color: #fff;
+  }
+`
+
 const Square = ({ square: player, number, onPlay, mark, marksToWin }) => {
   const style = {
     backgroundColor: player?.bgColor ?? DEFAULT_BACKGROUND_COLOR,
@@ -21,8 +54,8 @@ const Square = ({ square: player, number, onPlay, mark, marksToWin }) => {
   const playerClassName = `player-${player?.id ?? 'empty'}`
 
   return (
-    <div
-      className={classNames('square', playerClassName, {
+    <StyledDiv
+      className={classNames(playerClassName, {
         empty: !player,
       })}
       style={style}
@@ -31,7 +64,7 @@ const Square = ({ square: player, number, onPlay, mark, marksToWin }) => {
       }}
     >
       <StyledMark>{mark}</StyledMark>
-    </div>
+    </StyledDiv>
   )
 }
 
