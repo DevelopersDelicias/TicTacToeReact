@@ -1,20 +1,15 @@
-import React from 'react'
-import { render, screen } from '@testing-library/react'
 import '@testing-library/jest-dom'
-import Stats from '../../src/components/Stats'
+import { render, screen } from '@testing-library/react'
 import { shallow } from 'enzyme'
+import React from 'react'
 import Section from '../../src/components/Section'
+import Stats from '../../src/components/Stats'
 const helpers = require('../../src/helpers/game.helpers')
 
 describe('Stats', () => {
   it('renders', () => {
     const wrapper = shallow(<Stats marksInBoard={0} />)
     expect(wrapper).toBeDefined()
-  })
-
-  it('renders a div element', () => {
-    const wrapper = shallow(<Stats marksInBoard={0} />)
-    expect(wrapper.type()).toBe('div')
   })
 
   it('renders 3 sections', () => {

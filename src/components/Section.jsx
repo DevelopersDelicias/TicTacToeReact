@@ -12,7 +12,7 @@ const StyledLabel = styled.label`
 
 const Section = ({ id, label, message }) => {
   return (
-    <div className='section' id={id}>
+    <div id={id}>
       <StyledLabel>{label}</StyledLabel>
       <span>{message}</span>
     </div>

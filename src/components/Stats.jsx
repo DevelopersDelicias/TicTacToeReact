@@ -1,11 +1,16 @@
 import PropTypes from 'prop-types'
 import React from 'react'
+import styled from 'styled-components'
 import { getPlayerMessage } from '../helpers/game.helpers'
 import Section from './Section'
 
+const StyledDiv = styled.div`
+  padding-top: 10px;
+`
+
 const Stats = ({ nextPlayer, winner, marksInBoard }) => {
   return (
-    <div className='stats'>
+    <StyledDiv>
       <Section
         id='nextPlayer'
         label='Next Player:'
@@ -17,7 +22,7 @@ const Stats = ({ nextPlayer, winner, marksInBoard }) => {
         message={marksInBoard}
       />
       <Section id='winner' label='Winner:' message={getPlayerMessage(winner)} />
-    </div>
+    </StyledDiv>
   )
 }
 
