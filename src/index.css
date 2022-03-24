@@ -17,13 +17,6 @@ body {
   position: relative;
 }
 
-.square span {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateY(-50%) translateX(-50%);
-}
-
 .empty:before {
   background-color: #78bec5 !important;
   color: #78bec5;

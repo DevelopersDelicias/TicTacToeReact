@@ -1,8 +1,16 @@
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 import React from 'react'
+import styled from 'styled-components'
 
 const DEFAULT_BACKGROUND_COLOR = '#78bec5'
+
+const StyledMark = styled.span`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%) translateX(-50%);
+`
 
 const Square = ({ square: player, number, onPlay, mark, marksToWin }) => {
   const style = {
@@ -22,7 +30,7 @@ const Square = ({ square: player, number, onPlay, mark, marksToWin }) => {
         onPlay(number)
       }}
     >
-      <span>{mark}</span>
+      <StyledMark>{mark}</StyledMark>
     </div>
   )
 }
