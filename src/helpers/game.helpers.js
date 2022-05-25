@@ -3,30 +3,19 @@ const NO_WINNER = null
 export const getPlayerMessage = player =>
   player ? `Player ${player.id} (${player.mark})` : 'Nobody'
 
-const byRow = marksToWin => {
-  const rows = []
-  for (let i = 0; i < marksToWin; i++) {
-    const pos = i * marksToWin
-    const array = []
-    for (let j = 0; j < marksToWin; j++) {
-      array.push(pos + j)
-    }
-    rows.push(array)
-  }
-  return rows
-}
+const byRow = marksToWin =>
+  arrayOfLength(marksToWin).map((_val, rowIndex) =>
+    arrayOfLength(marksToWin).map(
+      (_value, columnIndex) => rowIndex * marksToWin + columnIndex,
+    ),
+  )
 
-const byColumn = marksToWin => {
-  const columns = []
-  for (let i = 0; i < marksToWin; i++) {
-    const array = []
-    for (let j = 0; j < marksToWin; j++) {
-      array.push(i + marksToWin * j)
-    }
-    columns.push(array)
-  }
-  return columns
-}
+const byColumn = marksToWin =>
+  arrayOfLength(marksToWin).map((_val, columnIndex) =>
+    arrayOfLength(marksToWin).map(
+      (_value, rowIndex) => rowIndex * marksToWin + columnIndex,
+    ),
+  )
 
 const arrayOfLength = length => Array(length).fill(null)
 
