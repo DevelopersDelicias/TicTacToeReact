@@ -28,21 +28,19 @@ const byColumn = marksToWin => {
   return columns
 }
 
+const arrayOfLength = length => Array(length).fill(null)
+
 const firstDiagonal = marksToWin => {
-  const array = []
-  for (let i = 0; i < marksToWin; i++) {
-    array.push(marksToWin * i + i)
-  }
-  return array
+  return arrayOfLength(marksToWin).map(
+    (_value, index) => marksToWin * index + index,
+  )
 }
 
 const secondDiagonal = marksToWin => {
-  const array = []
   const multiplier = marksToWin - 1
-  for (let i = 1; i <= marksToWin; i++) {
-    array.push(multiplier * i)
-  }
-  return array
+  return arrayOfLength(marksToWin).map(
+    (_value, index) => multiplier * (index + 1),
+  )
 }
 
 export const getCombinations = marksToWin => [
